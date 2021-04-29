@@ -14,6 +14,9 @@ body {
 .cart-item{
   display: inline-flex;
   margin: 20px 10px;
+  border: .5px solid gray;
+  border-radius: 5px;
+  overflow: hidden;
 }
 .cart-item .right-block{
   margin: 0 20px;
