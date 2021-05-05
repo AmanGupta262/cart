@@ -10,7 +10,7 @@ const Navbar = (props) => {
             alt="carticon"
             className="cart-icon"
           />
-          <span className="cart-count">3</span>
+          <span className="cart-count">{props.count}</span>
         </div>
       </div>
     );
