@@ -15,10 +15,9 @@ class App extends React.Component {
   componentDidMount(){
     firebase
       .firestore()
-      .collection('products')
-      .get()
-      .then((snapshot) => {
-        const products = snapshot.docs.map(doc =>{
+      .collection("products")
+      .onSnapshot((snapshot) => {
+        const products = snapshot.docs.map((doc) => {
           const data = doc.data();
           data.id = doc.id;
           return data;
@@ -26,10 +25,9 @@ class App extends React.Component {
 
         this.setState({
           products,
-          loading: false
+          loading: false,
         });
-
-      })
+      });
   }
 
   handleIncreaseQuantity = (product) => {
