@@ -11,12 +11,19 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.cart{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
 .cart-item {
   display: inline-flex;
   margin: 20px 10px;
   box-shadow: 0px 0px 10px 1px #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
+  padding: 1rem;
   overflow: hidden;
+  flex-wrap: wrap;
 }
 .cart-item .right-block {
   margin: 0 20px;

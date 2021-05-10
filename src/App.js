@@ -16,6 +16,7 @@ class App extends React.Component {
   componentDidMount(){
     this.db
       .collection("products")
+      .orderBy('price')
       .onSnapshot((snapshot) => {
         const products = snapshot.docs.map((doc) => {
           const data = doc.data();
@@ -58,13 +59,12 @@ class App extends React.Component {
   };
 
   handleDeleteProduct = (id) => {
-    const { products } = this.state;
 
-    const items = products.filter((item) => item.id !== id);
-
-    this.setState({
-      products: items
-    });
+    const docRef = this.db.collection("products").doc(id);
+    docRef
+      .delete()
+      .then((docRef) => console.log("Deleted Successfully"))
+      .catch((err) => console.log("Error : ", err));
   };
 
   getProductCount = () => {
@@ -106,7 +106,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar count={this.getProductCount()} />
-        <button style={{"padding": "1rem", "margin": "1rem"}} onClick={this.addProduct}>Add a Product</button>
+        {/* {<button style={{"padding": "1rem", "margin": "1rem"}} onClick={this.addProduct}>Add a Product</button>} */}
         <Cart
           products={products}
           onIncreaseQuantity={this.handleIncreaseQuantity}
